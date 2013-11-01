@@ -3,6 +3,9 @@
 repo_name=$1
 test -z $repo_name && echo "Repo name required." 1>&2 && exit 1
 
+# initalize a readme if not there, append nothing if it already exists
+echo '' >> README.md
+
 git init
 git remote add origin https://github.com/benmathes/$repo_name
 curl -u 'benmathes' https://api.github.com/user/repos -d "{\"name\":\"$repo_name\"}"
